@@ -1,5 +1,5 @@
-var { usuario } = require("./models");
-var { empresa } = require("./models");
+var { autor } = require("./models");
+var { livro } = require("./models");
 var express = require("express");
 var app = express();
 
@@ -30,8 +30,9 @@ app.put("/livros/:id", async function(req, res){
   res.json(resultado);
 });
 
-app.delete("/livros", async function(req, res){
-  livro.destroy({ where: { id: 1 }});
+app.delete("/livros/:id", async function (req, res){
+ var resultado =  await livro.destroy({where : {id:req.params.id}});
+ res.json(resultado)
 });
 
 //Routes - Autores
@@ -56,8 +57,9 @@ app.put("/autores/:id", async function(req, res){
   res.json(resultado);
 });
 
-app.delete("/autores", async function(req, res){
-  autor.destroy({ where: { id: 1 }});
+app.delete("/autores/:id", async function (req, res){
+ var resultado =  await autor.destroy({where : {id:req.params.id}});
+ res.json(resultado) 
 });
 
 ///////////////////////////////////////////////////
