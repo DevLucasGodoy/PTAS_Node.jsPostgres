@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      titulo: {
+        type: Sequelize.STRING
+      },
       autor: {
         type: Sequelize.STRING
       },

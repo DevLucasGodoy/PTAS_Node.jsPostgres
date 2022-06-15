@@ -9,7 +9,6 @@ app.use(express.urlencoded({
 }))
 
 //Routes - Livros
-
 app.get("/livros", async function(req, res){
 var mostrar = await livro.findAll();
   res.json(mostrar);
@@ -36,7 +35,6 @@ app.delete("/livros/:id", async function (req, res){
 });
 
 //Routes - Autores
-
 app.get("/autores", async function(req, res){
 var mostrar = await autor.findAll();
   res.json(mostrar);
@@ -64,5 +62,5 @@ app.delete("/autores/:id", async function (req, res){
 
 ///////////////////////////////////////////////////
 app.listen(3000, function(){
-  console.log("Servidor em ótimo funcionamento!");
+  console.log("Servidor está em ótimo funcionamento!");
 });
