@@ -60,7 +60,27 @@ app.delete("/autores/:id", async function (req, res){
  res.json(resultado) 
 });
 
-///////////////////////////////////////////////////
+//New Routes
+app.get("/autores/:id/livros", async function(req, res) {
+ const resultado = await autor.findByPk(req.params.id, {
+   include: 'livro'
+ });
+ res.json(resultado.livro);
+});
+
+app.get("/livros/:id/autores", async function(req, res) {
+ const resultado = await livro.findByPk(req.params.id, {
+   include: 'autores'
+ });
+ res.json(resultado.autores);
+});
+
+app.get("/autores/livros", async function(req, res) {
+ const resultado = await autor.findAll({
+     include: 'livro'});
+ res.json(resultado.livro);
+});
+
 app.listen(3000, function(){
   console.log("Servidor está em ótimo funcionamento!");
 });
